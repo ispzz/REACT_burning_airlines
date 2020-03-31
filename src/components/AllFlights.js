@@ -1,21 +1,9 @@
 import React from 'react';
 
-//
-
-// class AllFlights extends Component {
-//   render() {
-//     return(
-//       <div>
-//         Flights will be displayed here...
-//       </div>
-//     );
-//   }
-// }
-
 const AllFlights= (props) => {
   return (
     <div>
-      Flights will be displayed here...
+      { props.flights.map( (s) => <p key={ s.id }>{ s.flight }</p> ) }
     </div>
   );
 }
