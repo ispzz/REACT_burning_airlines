@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AllFlights from './AllFlights'
 
-const SERVER_URL = 'http://819112f2.ngrok.io/flights.json';
+const SERVER_URL = 'http://94fa6ae7.ngrok.io/flights.json';
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
-      flights: []
+      flights: [],
     };
 
     const fetchFlights = () => {
         axios.get(SERVER_URL).then((results) => {
           this.setState({flights: results.data});
-          // setTimeout(fetchSecrets, 4000);
+          // setTimeout(fetchFlights, 4000);
         });
       };
       fetchFlights();
