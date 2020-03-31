@@ -8,7 +8,7 @@ class Home extends Component {
         <h1>Flights</h1>
         <AllFlights />
       </div>
-    )
+    );
   }
 }
 export default Home;
