@@ -1,13 +1,14 @@
-import React from 'react';
-import Flight from './Flight.js';
+import React from "react";
+import Flight from "./Flight.js";
 
-const AllFlights= (props) => {
+const AllFlights = props => {
   return (
-    <div>
-      // { props.flights.map( (s) => <p>{ s.flight_no }</p> ) }
-      <Flight />
-    </div>
+    <ul>
+      {props.flights.map(s => (
+        <Flight flight_no={props.flight_no} />
+      ))}
+    </ul>
   );
-}
+};
 
 export default AllFlights;
