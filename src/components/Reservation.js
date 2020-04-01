@@ -17,12 +17,9 @@ class Reservation extends Component {
   }
   render(){
     return(
-        <div>
+        <div class = "column flex-1">
         {this.props.planes.map(s => (
-          <p>Seats: {s.seats}
-            <div class = "col-4">
-              {this.createButtons(s.seats)}
-          </div></p>
+          <p>Seats: {s.seats} <div class = "col-4">{this.createButtons(s.seats)}</div></p>
 
         ))}
         </div>
