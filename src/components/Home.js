@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AllFlights from './AllFlights'
 
-const SERVER_URL = 'http://94fa6ae7.ngrok.io/flights.json';
+const SERVER_URL = 'http://3308f8f8.ngrok.io/flights.json';
 
 class Home extends Component {
   constructor() {
