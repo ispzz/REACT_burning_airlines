@@ -45,7 +45,11 @@ class Home extends Component {
   }
 
   static defaultProps = {
-    stopClickFunc: this._handleFlightClick
+    stopClickFunc: this._handleFlightClick,
+    seatStylez: {
+      active: "btn btn-outline-success",
+      reserved: "btn btn-dark disabled"
+    }
   };
 
   fetchPlane = id => {
@@ -82,6 +86,7 @@ class Home extends Component {
           <Reservation
             planes={this.state.planes}
             clickSeatSelection={this._handleSeatClick}
+            seatStyling={this.props.seatStylez}
           />
         </div>
       </div>

@@ -7,13 +7,14 @@ class Reservation extends Component {
     this.createButtons = this.createButtons.bind(this);
   }
 
+  //"btn btn-outline-success"
   createButtons = s => {
     const seats = [];
     const totalSeats = s;
     for (let i = 0; i < totalSeats; i++) {
       seats.push(
         <button
-          class="btn btn-outline-success"
+          className={this.props.seatStyling.active} // style will be .active or .reserved
           type="button"
           onClick={this.props.clickSeatSelection}
         >{`Seat ${i + 1}`}</button>
@@ -23,7 +24,7 @@ class Reservation extends Component {
   };
   render() {
     return (
-      <div class="container">
+      <div className="container">
         {this.props.planes.map(s => (
           <p>
             Seats: {s.seats}
