@@ -10,8 +10,21 @@ class Reservation extends Component {
   createButtons = (s) => {
       const seats = [];
       const totalSeats = s;
-      for(let i = 0; i < totalSeats; i++){
-        seats.push(<button class="btn btn-outline-success" type="button">{`Seat ${i+1}`}</button>);
+      for(let i = 1; i <= totalSeats; i++){
+        const row = Math.ceil(i / 4);
+        const column = i % 4;
+        let seatNumber;
+        if (column === 1){
+          seatNumber = 'A';
+        }else if (column === 2){
+          seatNumber = 'B';
+        }else if (column === 3){
+          seatNumber = 'C';
+        }else if (column === 0){
+          seatNumber = 'D';
+        }
+        seatNumber = row.toString() + seatNumber;
+        seats.push(<button class="btn btn-outline-success" type="button">{seatNumber}</button>);
       }
       return seats;
   }
