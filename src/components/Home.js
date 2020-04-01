@@ -11,7 +11,8 @@ class Home extends Component {
     super();
 
     this.state = {
-      flights: []
+      flights: [],
+      planes: []
     };
 
     // Get Flights
@@ -22,6 +23,14 @@ class Home extends Component {
       });
     };
     fetchFlights();
+
+    // Get Plane
+    const fetchPlanes = () => {
+      axios.get(PLANES_URL).then(results => {
+        this.setState({ planes: results.data });
+      });
+    };
+    fetchPlanes();
 
     // Get Plane
     const fetchPlanes = () => {
@@ -42,10 +51,7 @@ class Home extends Component {
     return (
       <div>
         <h1>Book a flight wooo!</h1>
-        <AllFlights
-          flights={this.state.flights}
-          clickStopFunc={this.props.stopClickFunc}
-        />
+        <AllFlights flights={this.state.flights} planes={this.state.planes} />
         <div>
           <Reservation />
         </div>
