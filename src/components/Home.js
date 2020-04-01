@@ -12,7 +12,9 @@ class Home extends Component {
 
     this.state = {
       flights: [],
-      planes: []
+      planes: [],
+      reservations: [],
+      users: [],
     };
 
     // Get Flights
@@ -42,7 +44,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div class="text-center container">
         <h1>Book a flight wooo!</h1>
         <AllFlights
           flights={this.state.flights}
