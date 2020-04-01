@@ -21,7 +21,8 @@ class Home extends Component {
       planes: [],
       reservations: [],
       users: [],
-      clicked: false
+      // clicked: false
+      seat: null
     };
 
     //Will need to move all below
@@ -46,7 +47,7 @@ class Home extends Component {
 
   static defaultProps = {
     stopClickFunc: this._handleFlightClick,
-    seatStylez: { // z for zara
+    seatStylez: {
       active: "btn btn-outline-success",
       reserved: "btn btn-dark disabled",
       selected: "btn btn-success"
@@ -64,15 +65,22 @@ class Home extends Component {
 
   _handleFlightClick = e => {
     e.preventDefault();
-    //this.setState({ flightId: e.target.id });
+    this.setState({ flightId: e.target.id });
+
     this.fetchPlane(e.target.id);
   };
 
   _handleSeatClick = e => {
     e.preventDefault();
-    const current = this.state.clicked;
-    this.setState({clicked: !current});
-    console.log(e.target);
+
+    // const current = this.state.clicked;
+    // this.setState({clicked: !current});
+    // console.log(e.target);
+
+    console.log(e.target.id + " " + this.state.flightId);
+    this.setState({ seat: e.target.id });
+
+    // can make AJAX call using seat id and flight id
   };
 
   render() {

@@ -10,13 +10,29 @@ class Reservation extends Component {
   createButtons = s => {
     const seats = [];
     const totalSeats = s;
-    for (let i = 0; i < totalSeats; i++) {
+    for (let i = 1; i <= totalSeats; i++) {
+      const row = Math.ceil(i / 4);
+      const column = i % 4;
+      let seatNumber;
+      if (column === 1) {
+        seatNumber = "A";
+      } else if (column === 2) {
+        seatNumber = "B";
+      } else if (column === 3) {
+        seatNumber = "C";
+      } else if (column === 0) {
+        seatNumber = "D";
+      }
+      seatNumber = row.toString() + seatNumber;
       seats.push(
         <button
           className={this.props.clicked? this.props.seatStyling.selected : this.props.seatStyling.active} // style will be .active or .reserved
           type="button"
           onClick={this.props.clickSeatSelection}
-        >{`Seat ${i + 1}`}</button>
+          id={seatNumber}
+        >
+          {seatNumber}
+        </button>
       );
     }
     return seats;
