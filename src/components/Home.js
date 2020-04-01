@@ -38,7 +38,7 @@ class Home extends Component {
   static defaultProps = {
     stopClickFunc: function(e) {
       e.preventDefault();
-      console.log(event.target.id);
+      console.log(e.target.id);
     }
   };
 

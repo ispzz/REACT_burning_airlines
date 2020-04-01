@@ -4,7 +4,7 @@ class SearchForm extends Component {
   render() {
     return (
       <div class="jumbotron">
-        <h1>Book a flight wooo!</h1>
+        <h1 class="pb-3 display-4">Book a flight wooo!</h1>
         <form>
           <div class="form-group">
             <input class="form-control" type="search" placeholder="SYD" />
