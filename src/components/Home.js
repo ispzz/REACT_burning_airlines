@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AllFlights from './AllFlights'
 
-const SERVER_URL = 'http://3308f8f8.ngrok.io/flights.json';
+const SERVER_URL = 'http://fff5cbb2.ngrok.io/flights.json';
 
 class Home extends Component {
   constructor() {
@@ -23,7 +23,7 @@ class Home extends Component {
   render(){
     return(
       <div>
-        <h1>Flights</h1>
+        <h1>Book a flight wooo!</h1>
         <AllFlights flights={ this.state.flights }/>
       </div>
     );
