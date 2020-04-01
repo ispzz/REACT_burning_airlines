@@ -4,7 +4,7 @@ import AllFlights from "./AllFlights";
 import Reservation from "./Reservation.js";
 
 // whenever ngrok resets update or stick another url in
-const MAIN_URL = `http://93621e8c.ngrok.io`;
+const MAIN_URL = `http://d0038c4a.ngrok.io/`;
 
 const SERVER_URL = MAIN_URL + "/flights.json";
 const PLANES_URL = MAIN_URL + "/planes.json";
@@ -15,13 +15,13 @@ const SINGLE_PLANE_URL = `${MAIN_URL}/planes/`;
 class Home extends Component {
   constructor() {
     super();
-
     this.state = {
       flightId: 0,
       flights: [],
       planes: [],
       reservations: [],
-      users: []
+      users: [],
+      clicked: false
     };
 
     //Will need to move all below
@@ -45,7 +45,12 @@ class Home extends Component {
   }
 
   static defaultProps = {
-    stopClickFunc: this._handleFlightClick
+    stopClickFunc: this._handleFlightClick,
+    seatStylez: { // z for zara
+      active: "btn btn-outline-success",
+      reserved: "btn btn-dark disabled",
+      selected: "btn btn-success"
+    }
   };
 
   fetchPlane = id => {
@@ -60,13 +65,13 @@ class Home extends Component {
   _handleFlightClick = e => {
     e.preventDefault();
     //this.setState({ flightId: e.target.id });
-
     this.fetchPlane(e.target.id);
   };
 
   _handleSeatClick = e => {
     e.preventDefault();
-
+    const current = this.state.clicked;
+    this.setState({clicked: !current});
     console.log(e.target);
   };
 
@@ -81,7 +86,9 @@ class Home extends Component {
         <div>
           <Reservation
             planes={this.state.planes}
-            clickSeatSelection={this._handleSeatClick}
+            clickSeatSelection={this._handleSeatClick.bind(this)}
+            clicked={this.state.clicked}
+            seatStyling={this.props.seatStylez}
           />
         </div>
       </div>
