@@ -50,7 +50,7 @@ class Home extends Component {
           clickStopFunc={this.props.stopClickFunc}
         />
         <div>
-          <Reservation />
+          <Reservation planes={this.state.planes}/>
         </div>
       </div>
     );
