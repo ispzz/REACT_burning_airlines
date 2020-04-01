@@ -4,9 +4,13 @@ class SearchForm extends Component {
   render() {
     return (
       <div class="jumbotron">
-        <form class="form-group">
-           <input class="form-control" type="search" placeholder="SYD" />
-           <button type="submit" class="btn btn-primary btn-lg">Search</button>
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="search" placeholder="SYD" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+          </div>
         </form>
       </div>
     );

@@ -44,7 +44,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div class="text-center container">
+      <div class="py-5 text-center container">
         <h1>Book a flight wooo!</h1>
         <AllFlights
           flights={this.state.flights}
