@@ -1,17 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class SearchForm extends Component {
   render() {
     return (
-      <div class="jumbotron">
-      <img class="mt-0 p-0" src='https://i.imgur.com/KTd0yIv.png' width='200' />
-        <h1 class="pb-3 display-4">Book a flight wooo!</h1>
+      <div className="jumbotron">
+        <img
+          className="mt-0 p-0"
+          src="https://i.imgur.com/KTd0yIv.png"
+          width="200"
+        />
+        <h1 className="pb-3 display-4">Book a flight wooo!</h1>
         <form>
-          <div class="form-group">
-            <input class="form-control" type="search" placeholder="SYD" />
+          <div className="form-group">
+            <input className="form-control" type="search" placeholder="SYD" />
           </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary btn-lg">
+              Search
+            </button>
           </div>
         </form>
       </div>

@@ -45,7 +45,11 @@ class Home extends Component {
   }
 
   static defaultProps = {
-    stopClickFunc: this._handleFlightClick
+    stopClickFunc: this._handleFlightClick,
+    seatStylez: {
+      active: "btn btn-outline-success",
+      reserved: "btn btn-dark disabled"
+    }
   };
 
   fetchPlane = id => {
@@ -64,6 +68,12 @@ class Home extends Component {
     this.fetchPlane(e.target.id);
   };
 
+  _handleSeatClick = e => {
+    e.preventDefault();
+
+    console.log(e.target);
+  };
+
   render() {
     return (
       <div className="py-5 text-center container">
@@ -73,7 +83,11 @@ class Home extends Component {
           clickStopFunc={this._handleFlightClick}
         />
         <div>
-          <Reservation planes={this.state.planes} />
+          <Reservation
+            planes={this.state.planes}
+            clickSeatSelection={this._handleSeatClick}
+            seatStyling={this.props.seatStylez}
+          />
         </div>
       </div>
     );
