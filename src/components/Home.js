@@ -3,6 +3,7 @@ import axios from 'axios';
 import AllFlights from './AllFlights'
 
 const SERVER_URL = 'http://fff5cbb2.ngrok.io/flights.json';
+const PLANES_URL = 'http://fff5cbb2.ngrok.io/planes.json';
 
 class Home extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class Home extends Component {
       flights: [],
     };
 
+    // Get Flights
     const fetchFlights = () => {
         axios.get(SERVER_URL).then((results) => {
           this.setState({flights: results.data});
@@ -18,6 +20,14 @@ class Home extends Component {
         });
       };
       fetchFlights();
+
+     // Get Plane
+     const fetchPlanes = () => {
+       axios.get(PLANES_URL).then((results) => {
+         this.setState({planes: results.data});
+       });
+     }
+
   }
 
   render(){
