@@ -11,39 +11,23 @@ class Reservation extends Component {
       const seats = [];
       const totalSeats = s;
       for(let i = 0; i < totalSeats; i++){
-        seats.push(<button type="button">{`Seat ${i+1}`}</button>);
+        seats.push(<button class="btn btn-outline-success" type="button">{`Seat ${i+1}`}</button>);
       }
       return seats;
   }
-
   render(){
     return(
-      <div>
+        <div>
         {this.props.planes.map(s => (
-          <p>Seats: {s.seats} {this.createButtons(s.seats)}</p>
+          <p>Seats: {s.seats}
+            <div class = "col-4">
+              {this.createButtons(s.seats)}
+          </div></p>
 
         ))}
-
-      </div>
+        </div>
     )
   }
 }
-
-// const Reservation= (props) => {
-//   console.log(props);
-//   return (
-//
-//     // <div>
-//     //   <li>
-//     //     Seats: {props.seats}
-//     //   </li>
-//     //   <button type="button">SeatA1</button>
-//     //   <button type="button">SeatA2</button>
-//     //   <button type="button">SeatB1</button>
-//     //   <button type="button">SeatB2</button>
-//     // </div>
-//   );
-// }
-
 
 export default Reservation;

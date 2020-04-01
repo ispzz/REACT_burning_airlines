@@ -13,7 +13,9 @@ class Home extends Component {
     this.state = {
       flightId: 0,
       flights: [],
-      planes: []
+      planes: [],
+      reservations: [],
+      users: []
     };
 
     // Get Flights
@@ -46,8 +48,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Book a flight wooo!</h1>
+      <div className="py-5 text-center container">
         <AllFlights
           flights={this.state.flights}
           planes={this.state.planes}

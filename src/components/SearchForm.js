@@ -3,10 +3,17 @@ import React, { Component } from 'react';
 class SearchForm extends Component {
   render() {
     return (
-      <form>
-         <input type="search" placeholder="SYD" />
-         <input type="submit" value="Search" />
-      </form>
+      <div class="jumbotron">
+        <h1 class="pb-3 display-4">Book a flight wooo!</h1>
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="search" placeholder="SYD" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }
