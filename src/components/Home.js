@@ -38,7 +38,7 @@ class Home extends Component {
   static defaultProps = {
     stopClickFunc: function(e) {
       e.preventDefault();
-      console.log("The link was clicked.");
+      console.log(event.target.id);
     }
   };
 
@@ -51,7 +51,7 @@ class Home extends Component {
           clickStopFunc={this.props.stopClickFunc}
         />
         <div>
-          <Reservation planes={this.state.planes}/>
+          <Reservation planes={this.state.planes} />
         </div>
       </div>
     );
