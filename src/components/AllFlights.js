@@ -16,10 +16,6 @@ const AllFlights = props => {
             clickStopFunc={props.clickStopFunc}
           />
         ))}
-
-        {props.planes.map(s => (
-          <Reservation seats={s.seats} />
-        ))}
       </ul>
     </div>
   );
