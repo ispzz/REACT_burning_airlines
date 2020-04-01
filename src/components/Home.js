@@ -11,6 +11,7 @@ class Home extends Component {
     super();
 
     this.state = {
+      flightId: 0,
       flights: [],
       planes: []
     };
@@ -34,10 +35,13 @@ class Home extends Component {
   }
 
   static defaultProps = {
-    stopClickFunc: function(e) {
-      e.preventDefault();
-      console.log(event.target.id);
-    }
+    stopClickFunc: this._handleFlightClick
+  };
+
+  _handleFlightClick = e => {
+    e.preventDefault();
+    //console.log(e.target.id);
+    this.setState({ flightId: e.target.id });
   };
 
   render() {
@@ -47,7 +51,7 @@ class Home extends Component {
         <AllFlights
           flights={this.state.flights}
           planes={this.state.planes}
-          clickStopFunc={this.props.stopClickFunc}
+          clickStopFunc={this._handleFlightClick}
         />
         <div>
           <Reservation planes={this.state.planes} />
