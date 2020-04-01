@@ -4,7 +4,7 @@ class SearchForm extends Component {
   render() {
     return (
       <div class="jumbotron">
-      <img class="mt-0 p-0" src='https://i.imgur.com/KTd0yIv.png' width='200' />
+      <img class="mt-0 p-0" src='https://i.imgur.com/KTd0yIv.png' width='200' alt=""/>
         <h1 class="pb-3 display-4">Book a flight wooo!</h1>
         <form>
           <div class="form-group">
