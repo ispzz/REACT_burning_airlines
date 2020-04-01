@@ -21,7 +21,8 @@ class Home extends Component {
       flights: [],
       planes: [],
       reservations: [],
-      users: []
+      users: [],
+      seat: null
     };
 
     //Will need to move all below
@@ -63,7 +64,7 @@ class Home extends Component {
 
   _handleFlightClick = e => {
     e.preventDefault();
-    //this.setState({ flightId: e.target.id });
+    this.setState({ flightId: e.target.id });
 
     this.fetchPlane(e.target.id);
   };
@@ -71,7 +72,11 @@ class Home extends Component {
   _handleSeatClick = e => {
     e.preventDefault();
 
-    console.log(e.target);
+    console.log(e.target.id + " " + this.state.flightId);
+
+    this.setState({ seat: e.target.id });
+
+    // can make AJAX call using seat id and flight id
   };
 
   render() {
