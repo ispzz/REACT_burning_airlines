@@ -2,9 +2,14 @@ import React, { Component } from "react";
 // import React from 'react';
 
 class Reservation extends Component {
-  createButtons = () => {
+  constructor(){
+    super();
+    this.createButtons = this.createButtons.bind(this);
+  }
+
+  createButtons = (s) => {
       const seats = [];
-      const totalSeats = this.props.seats;
+      const totalSeats = s;
       for(let i = 0; i < totalSeats; i++){
         seats.push(<button type="button">{`Seat ${i+1}`}</button>);
       }
@@ -13,8 +18,11 @@ class Reservation extends Component {
   render(){
     return(
       <div>
-        <p>Seats: {this.props.seats}</p>
-        {this.createButtons()}
+        {this.props.planes.map(s => (
+          <p>Seats: {s.seats} {this.createButtons(s.seats)}</p>
+
+        ))}
+
       </div>
     )
   }
