@@ -17,10 +17,11 @@ class Home extends Component {
     super();
 
     this.state = {
+      flightId: 0,
       flights: [],
       planes: [],
       reservations: [],
-      users: [],
+      users: []
     };
 
     //Will need to move all below
@@ -69,7 +70,7 @@ class Home extends Component {
         <AllFlights
           flights={this.state.flights}
           planes={this.state.planes}
-          clickStopFunc={this.props.stopClickFunc}
+          clickStopFunc={this._handleFlightClick}
         />
         <div>
           <Reservation planes={this.state.planes} />
