@@ -1,7 +1,6 @@
 import React from "react";
 import Flight from "./Flight.js";
 import SearchForm from "./SearchForm.js";
-import Reservation from "./Reservation.js";
 
 const AllFlights = props => {
   return (
@@ -9,10 +8,15 @@ const AllFlights = props => {
       <SearchForm />
       <ul>
         {props.flights.map(s => (
-          <Flight flight_no={s.flight_no} source={s.source} destination={s.destination} date={s.date} />
+          <Flight
+            flight_no={s.flight_no}
+            source={s.source}
+            destination={s.destination}
+            date={s.date}
+            clickStopFunc={props.clickStopFunc}
+          />
         ))}
       </ul>
-      <Reservation />
     </div>
   );
 };
