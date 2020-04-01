@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import React from 'react';
 
 class Reservation extends Component {
   constructor() {
@@ -15,22 +14,25 @@ class Reservation extends Component {
       const row = Math.ceil(i / 4);
       const column = i % 4;
       let seatNumber;
-      if (column === 1){
-        seatNumber = 'A';
-      }else if (column === 2){
-        seatNumber = 'B';
-      }else if (column === 3){
-        seatNumber = 'C';
-      }else if (column === 0){
-        seatNumber = 'D';
+      if (column === 1) {
+        seatNumber = "A";
+      } else if (column === 2) {
+        seatNumber = "B";
+      } else if (column === 3) {
+        seatNumber = "C";
+      } else if (column === 0) {
+        seatNumber = "D";
       }
       seatNumber = row.toString() + seatNumber;
       seats.push(
         <button
-          className={this.props.seatStyling.active} // style will be .active or .reserved
+          className={this.props.clicked? this.props.seatStyling.selected : this.props.seatStyling.active} // style will be .active or .reserved
           type="button"
           onClick={this.props.clickSeatSelection}
-        >{seatNumber}</button>
+          id={seatNumber}
+        >
+          {seatNumber}
+        </button>
       );
     }
     return seats;

@@ -15,13 +15,14 @@ const SINGLE_PLANE_URL = `${MAIN_URL}/planes/`;
 class Home extends Component {
   constructor() {
     super();
-
     this.state = {
       flightId: 0,
       flights: [],
       planes: [],
       reservations: [],
-      users: []
+      users: [],
+      // clicked: false
+      seat: null
     };
 
     //Will need to move all below
@@ -48,7 +49,8 @@ class Home extends Component {
     stopClickFunc: this._handleFlightClick,
     seatStylez: {
       active: "btn btn-outline-success",
-      reserved: "btn btn-dark disabled"
+      reserved: "btn btn-dark disabled",
+      selected: "btn btn-success"
     }
   };
 
@@ -63,7 +65,7 @@ class Home extends Component {
 
   _handleFlightClick = e => {
     e.preventDefault();
-    //this.setState({ flightId: e.target.id });
+    this.setState({ flightId: e.target.id });
 
     this.fetchPlane(e.target.id);
   };
@@ -71,7 +73,14 @@ class Home extends Component {
   _handleSeatClick = e => {
     e.preventDefault();
 
-    console.log(e.target);
+    // const current = this.state.clicked;
+    // this.setState({clicked: !current});
+    // console.log(e.target);
+
+    console.log(e.target.id + " " + this.state.flightId);
+    this.setState({ seat: e.target.id });
+
+    // can make AJAX call using seat id and flight id
   };
 
   render() {
@@ -85,7 +94,8 @@ class Home extends Component {
         <div>
           <Reservation
             planes={this.state.planes}
-            clickSeatSelection={this._handleSeatClick}
+            clickSeatSelection={this._handleSeatClick.bind(this)}
+            clicked={this.state.clicked}
             seatStyling={this.props.seatStylez}
           />
         </div>
