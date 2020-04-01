@@ -18,13 +18,15 @@ const Reservation= (props) => {
   console.log(props);
   return (
     <div>
-      <li>
+      <p>
         Seats: {props.seats}
-      </li>
-      <button type="button">SeatA1</button>
-      <button type="button">SeatA2</button>
-      <button type="button">SeatB1</button>
-      <button type="button">SeatB2</button>
+      </p>
+      <div class="btn-group">
+        <button class="btn btn-success" type="button">SeatA1</button>
+        <button class="btn btn-outline-success" type="button">SeatA2</button>
+        <button class="btn btn-dark" type="button" disabled>SeatB1</button>
+        <button class="btn btn-outline-success" type="button">SeatB2</button>
+      </div>
     </div>
   );
 }
