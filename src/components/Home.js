@@ -3,8 +3,8 @@ import axios from "axios";
 import AllFlights from "./AllFlights";
 import Reservation from "./Reservation.js";
 
-const SERVER_URL = "http://fff5cbb2.ngrok.io/flights.json";
-const PLANES_URL = "http://fff5cbb2.ngrok.io/planes.json";
+const SERVER_URL = "http://93621e8c.ngrok.io/flights.json";
+const PLANES_URL = "http://93621e8c.ngrok.io/planes.json";
 
 class Home extends Component {
   constructor() {
