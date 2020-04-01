@@ -11,8 +11,11 @@ const AllFlights = props => {
         {props.flights.map(s => (
           <Flight flight_no={s.flight_no} source={s.source} destination={s.destination} date={s.date} />
         ))}
+
+        {props.planes.map(s => (
+          <Reservation seats={s.seats} />
+        ))}
       </ul>
-      <Reservation />
     </div>
   );
 };

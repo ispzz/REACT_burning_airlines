@@ -10,6 +10,7 @@ class Home extends Component {
     super();
     this.state = {
       flights: [],
+      planes: [],
     };
 
     // Get Flights
@@ -27,6 +28,7 @@ class Home extends Component {
          this.setState({planes: results.data});
        });
      }
+     fetchPlanes();
 
   }
 
@@ -34,7 +36,7 @@ class Home extends Component {
     return(
       <div>
         <h1>Book a flight wooo!</h1>
-        <AllFlights flights={ this.state.flights }/>
+        <AllFlights flights={ this.state.flights } planes={ this.state.planes} />
       </div>
     );
   }
