@@ -31,13 +31,6 @@ class Home extends Component {
       });
     };
     fetchPlanes();
-
-    // Get Plane
-    const fetchPlanes = () => {
-      axios.get(PLANES_URL).then(results => {
-        this.setState({ planes: results.data });
-      });
-    };
   }
 
   static defaultProps = {
@@ -51,7 +44,11 @@ class Home extends Component {
     return (
       <div>
         <h1>Book a flight wooo!</h1>
-        <AllFlights flights={this.state.flights} planes={this.state.planes} />
+        <AllFlights
+          flights={this.state.flights}
+          planes={this.state.planes}
+          clickStopFunc={this.props.stopClickFunc}
+        />
         <div>
           <Reservation />
         </div>
