@@ -11,19 +11,18 @@ class Reservation extends Component {
       const seats = [];
       const totalSeats = s;
       for(let i = 0; i < totalSeats; i++){
-        seats.push(<button type="button">{`Seat ${i+1}`}</button>);
+        seats.push(<button class="btn btn-outline-success" type="button">{`Seat ${i+1}`}</button>);
       }
       return seats;
   }
   render(){
     return(
-      <div>
+        <div class = "column flex-1">
         {this.props.planes.map(s => (
-          <p>Seats: {s.seats} {this.createButtons(s.seats)}</p>
+          <p>Seats: {s.seats} <div class = "col-4">{this.createButtons(s.seats)}</div></p>
 
         ))}
-
-      </div>
+        </div>
     )
   }
 }
