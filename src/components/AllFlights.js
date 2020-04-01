@@ -14,6 +14,7 @@ const AllFlights = props => {
             destination={s.destination}
             date={s.date}
             clickStopFunc={props.clickStopFunc}
+            id={s.id}
           />
         ))}
       </ul>
