@@ -8,6 +8,7 @@ const MAIN_URL = `http://0c8e1d00.ngrok.io`;
 
 const SERVER_URL = MAIN_URL + "/flights.json";
 const PLANES_URL = MAIN_URL + "/planes.json";
+const RESERV_URL = MAIN_URL + "/reservations.json"
 
 //
 const SINGLE_PLANE_URL = `${MAIN_URL}/planes/`;
@@ -15,13 +16,13 @@ const SINGLE_PLANE_URL = `${MAIN_URL}/planes/`;
 class Home extends Component {
   constructor() {
     super();
+
     this.state = {
       flightId: 0,
       flights: [],
       planes: [],
       reservations: [],
       users: [],
-      // clicked: false
       seat: null
     };
 
@@ -49,8 +50,7 @@ class Home extends Component {
     stopClickFunc: this._handleFlightClick,
     seatStylez: {
       active: "btn btn-outline-success",
-      reserved: "btn btn-dark disabled",
-      selected: "btn btn-success"
+      reserved: "btn btn-dark disabled"
     }
   };
 
@@ -63,21 +63,33 @@ class Home extends Component {
     });
   };
 
+  fetchReservations = () => {
+    let reservationsArr = null
+    axios.get(`${RESERV_URL}`).then(results => {
+      reservationsArr = results.data
+      //get reserved seats for flight, needs coersion for id lol
+      reservationsArr = reservationsArr.filter(res => res.flight_id == this.state.flightId).map(r => r.seat)
+
+      this.setState({ reservations: reservationsArr });
+    });
+  };
+
   _handleFlightClick = e => {
     e.preventDefault();
+    //store flight id - its a string so coerce to int
     this.setState({ flightId: e.target.id });
 
+    //get plane details from backend
     this.fetchPlane(e.target.id);
+    // get reservations for flight
+    this.fetchReservations()
   };
 
   _handleSeatClick = e => {
     e.preventDefault();
 
-    // const current = this.state.clicked;
-    // this.setState({clicked: !current});
-    // console.log(e.target);
-
     console.log(e.target.id + " " + this.state.flightId);
+
     this.setState({ seat: e.target.id });
 
     // can make AJAX call using seat id and flight id
@@ -94,8 +106,7 @@ class Home extends Component {
         <div>
           <Reservation
             planes={this.state.planes}
-            clickSeatSelection={this._handleSeatClick.bind(this)}
-            clicked={this.state.clicked}
+            clickSeatSelection={this._handleSeatClick}
             seatStyling={this.props.seatStylez}
           />
         </div>
