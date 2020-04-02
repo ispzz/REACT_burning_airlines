@@ -108,6 +108,7 @@ class Home extends Component {
             planes={this.state.planes}
             clickSeatSelection={this._handleSeatClick}
             seatStyling={this.props.seatStylez}
+            reservedSeats={this.state.reservations}
           />
         </div>
       </div>

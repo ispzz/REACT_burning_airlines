@@ -10,8 +10,8 @@ class Reservation extends Component {
   createButtons = s => {
     const seats = [];
     const totalSeats = s;
-    // let buttonStyle;
-    // let disabled;
+    let buttonStyle; //determine style button
+    let disabled; // disable clicking of seat
     for (let i = 1; i <= totalSeats; i++) {
       //row determines the number. divide first number by 4 (4 seats/row)
       const row = Math.ceil(i / 4);
@@ -28,22 +28,24 @@ class Reservation extends Component {
         seatNumber = "D";
       }
       seatNumber = row.toString() + seatNumber;
-      // disabled = '';
-      // buttonStyle = '';
-      // if (this.props.seat.includes(seatNumber)){
-      //   disabled = true;
-      //   buttonStyle = this.props.seatStyling.reserved;
-      // } else {
-      //   buttonStyle = this.props.seatStyling.active;
-      // }
+      disabled = '';
+      buttonStyle = '';
+      //start: this matches seatNumber with already reserved seats
+      if (this.props.reservedSeats.includes(seatNumber)){
+        disabled = true;
+        buttonStyle = this.props.seatStyling.reserved;
+      } else {
+        buttonStyle = this.props.seatStyling.active;
+      }
+      //end: this matches seatNumber with already reserved seats
       seats.push(
         <button
-          className={this.props.clicked ? this.props.seatStyling.selected : this.props.seatStyling.active}
+          className={this.props.clicked ? this.props.seatStyling.selected : buttonStyle}
           // style will be .active or .reserved
           type="button"
           onClick={this.props.clickSeatSelection}
           id={seatNumber}
-          // disabled={disabled}
+          disabled={disabled}
         >
           {seatNumber}
         </button>
