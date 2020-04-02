@@ -28,7 +28,7 @@ class Reservation extends Component {
         <button
           className={this.props.clicked? this.props.seatStyling.selected : this.props.seatStyling.active} // style will be .active or .reserved
           type="button"
-          onClick={this.props.clickSeatSelection}
+          onClick={(seatId) => this.props.clickSeatSelection(seatId)}
           id={seatNumber}
         >
           {seatNumber}

@@ -4,7 +4,7 @@ import AllFlights from "./AllFlights";
 import Reservation from "./Reservation.js";
 
 // whenever ngrok resets update or stick another url in
-const MAIN_URL = `http://d0038c4a.ngrok.io/`;
+const MAIN_URL = `http://0c8e1d00.ngrok.io/`;
 
 const SERVER_URL = MAIN_URL + "/flights.json";
 const PLANES_URL = MAIN_URL + "/planes.json";
@@ -21,7 +21,6 @@ class Home extends Component {
       planes: [],
       reservations: [],
       users: [],
-      // clicked: false
       seat: null
     };
 
@@ -72,13 +71,12 @@ class Home extends Component {
 
   _handleSeatClick = e => {
     e.preventDefault();
-
-    // const current = this.state.clicked;
-    // this.setState({clicked: !current});
-    // console.log(e.target);
-
     console.log(e.target.id + " " + this.state.flightId);
-    this.setState({ seat: e.target.id });
+    const current = this.state.clicked;
+    this.setState({
+      seat: e.target.id,
+      clicked: !current
+    });
 
     // can make AJAX call using seat id and flight id
   };
@@ -94,8 +92,9 @@ class Home extends Component {
         <div>
           <Reservation
             planes={this.state.planes}
-            clickSeatSelection={this._handleSeatClick.bind(this)}
+            clickSeatSelection={this._handleSeatClick}
             clicked={this.state.clicked}
+            seatId={this.state.seat}
             seatStyling={this.props.seatStylez}
           />
         </div>
