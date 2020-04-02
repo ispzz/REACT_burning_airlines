@@ -14,6 +14,10 @@ class SearchForm extends Component {
           <div className="form-group">
             <input className="form-control" type="search" placeholder="SYD" />
           </div>
+          <p>to</p> 
+          <div className="form-group">
+            <input className="form-control" type="search" placeholder="MEL" />
+          </div>
           <div className="form-group">
             <button type="submit" className="btn btn-primary btn-lg">
               Search
