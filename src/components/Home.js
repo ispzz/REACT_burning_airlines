@@ -4,10 +4,11 @@ import AllFlights from "./AllFlights";
 import Reservation from "./Reservation.js";
 
 // whenever ngrok resets update or stick another url in
-const MAIN_URL = `http://0c8e1d00.ngrok.io/`;
+const MAIN_URL = `http://0c8e1d00.ngrok.io`;
 
 const SERVER_URL = MAIN_URL + "/flights.json";
 const PLANES_URL = MAIN_URL + "/planes.json";
+const RESERV_URL = MAIN_URL + "/reservations.json"
 
 //
 const SINGLE_PLANE_URL = `${MAIN_URL}/planes/`;
@@ -15,6 +16,7 @@ const SINGLE_PLANE_URL = `${MAIN_URL}/planes/`;
 class Home extends Component {
   constructor() {
     super();
+
     this.state = {
       flightId: 0,
       flights: [],
@@ -48,8 +50,7 @@ class Home extends Component {
     stopClickFunc: this._handleFlightClick,
     seatStylez: {
       active: "btn btn-outline-success",
-      reserved: "btn btn-dark disabled",
-      selected: "btn btn-success"
+      reserved: "btn btn-dark disabled"
     }
   };
 
@@ -62,16 +63,33 @@ class Home extends Component {
     });
   };
 
+  fetchReservations = () => {
+    let reservationsArr = null
+    axios.get(`${RESERV_URL}`).then(results => {
+      reservationsArr = results.data
+      //get reserved seats for flight, needs coersion for id lol
+      reservationsArr = reservationsArr.filter(res => res.flight_id == this.state.flightId).map(r => r.seat)
+
+      this.setState({ reservations: reservationsArr });
+    });
+  };
+
   _handleFlightClick = e => {
     e.preventDefault();
+    //store flight id - its a string so coerce to int
     this.setState({ flightId: e.target.id });
 
+    //get plane details from backend
     this.fetchPlane(e.target.id);
+    // get reservations for flight
+    this.fetchReservations()
   };
 
   _handleSeatClick = e => {
     e.preventDefault();
+
     console.log(e.target.id + " " + this.state.flightId);
+
     const current = this.state.clicked;
     this.setState({
       seat: e.target.id,
@@ -96,6 +114,7 @@ class Home extends Component {
             clicked={this.state.clicked}
             seatId={this.state.seat}
             seatStyling={this.props.seatStylez}
+            reservedSeats={this.state.reservations}
           />
         </div>
       </div>
