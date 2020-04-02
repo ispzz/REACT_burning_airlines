@@ -50,7 +50,8 @@ class Home extends Component {
     stopClickFunc: this._handleFlightClick,
     seatStylez: {
       active: "btn btn-outline-success",
-      reserved: "btn btn-dark disabled"
+      reserved: "btn btn-dark disabled",
+      selected: "btn btn-success"
     }
   };
 
