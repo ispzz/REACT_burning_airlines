@@ -91,7 +91,8 @@ class Home extends Component {
 
     console.log(e.target.id + " " + this.state.flightId);
 
-    const current = this.state.clicked;
+    // const current = this.state.clicked;
+    const current = false;
     this.setState({
       seat: e.target.id,
       clicked: !current

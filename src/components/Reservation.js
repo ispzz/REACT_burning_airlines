@@ -34,13 +34,16 @@ class Reservation extends Component {
       if (this.props.reservedSeats.includes(seatNumber)){
         disabled = true;
         buttonStyle = this.props.seatStyling.reserved;
+      } else if (this.props.clicked && this.props.seatId === seatNumber){
+        buttonStyle = this.props.seatStyling.selected;
       } else {
         buttonStyle = this.props.seatStyling.active;
       }
       //end: this matches seatNumber with already reserved seats
       seats.push(
         <button
-          className={this.props.clicked ? this.props.seatStyling.selected : buttonStyle}
+          // className={this.props.clicked ? this.props.seatStyling.selected : buttonStyle}
+          className={buttonStyle}
           // style will be .active or .reserved
           type="button"
           onClick={(seatId) => this.props.clickSeatSelection(seatId)}
