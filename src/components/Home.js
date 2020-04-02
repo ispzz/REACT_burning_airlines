@@ -26,7 +26,7 @@ class Home extends Component {
       seat: null
     };
 
-    //Will need to move all below
+    //Will need to move all below out of constructor
 
     // Get Flights
     const fetchFlights = () => {
@@ -36,14 +36,6 @@ class Home extends Component {
       });
     };
     fetchFlights();
-
-    // Get Plane
-    // const fetchPlanes = () => {
-    //   axios.get(PLANES_URL).then(results => {
-    //     this.setState({ planes: results.data });
-    //   });
-    // };
-    // fetchPlanes();
   }
 
   static defaultProps = {
@@ -78,9 +70,8 @@ class Home extends Component {
   pushReservation = (seatid) => {
   axios.post(`${RESERV_URL}`, {seat: seatid, flight_id: parseInt(this.state.flightId, 10), user_id: 6}).then((results) => {
       let reservationsArr = results.data
-      //get reserved seats for flight, needs coersion for id lol
-      //reservationsArr = reservationsArr.filter(res => res.flight_id == this.state.flightId).map(r => r.seat)
-      console.log(reservationsArr);
+
+    // WIP, check logs for output
     });
   };
 
@@ -98,8 +89,6 @@ class Home extends Component {
 
   _handleSeatClick = e => {
     e.preventDefault();
-
-    //console.log(e.target.id + " " + this.state.flightId);
 
     // const current = this.state.clicked;
     const current = false;
