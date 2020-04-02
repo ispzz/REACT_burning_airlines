@@ -75,6 +75,15 @@ class Home extends Component {
     });
   };
 
+  pushReservation = (seatid) => {
+  axios.post(`${RESERV_URL}`, {seat: seatid, flight_id: parseInt(this.state.flightId, 10), user_id: 6}).then((results) => {
+      let reservationsArr = results.data
+      //get reserved seats for flight, needs coersion for id lol
+      //reservationsArr = reservationsArr.filter(res => res.flight_id == this.state.flightId).map(r => r.seat)
+      console.log(reservationsArr);
+    });
+  };
+
   _handleFlightClick = e => {
     e.preventDefault();
     //store flight id - its a string so coerce to int
@@ -85,11 +94,12 @@ class Home extends Component {
     // get reservations for flight
     this.fetchReservations()
   };
+  
 
   _handleSeatClick = e => {
     e.preventDefault();
 
-    console.log(e.target.id + " " + this.state.flightId);
+    //console.log(e.target.id + " " + this.state.flightId);
 
     const current = this.state.clicked;
     this.setState({
@@ -98,6 +108,7 @@ class Home extends Component {
     });
 
     // can make AJAX call using seat id and flight id
+    this.pushReservation(e.target.id)
   };
 
   render() {
